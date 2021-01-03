@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" [routerLink]="['add']" style="font-size: 20px">New recipe</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12" >
+    <app-recipe-item *ngFor="let curRecip of recipes; let i = index"
+                     [index]="i"
+                     [recipe]="curRecip" ></app-recipe-item>
+  </div>
+</div>
+

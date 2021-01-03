@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()" #addIngredientForm="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name" style="font-size: 20px;">Name</label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 name="name"
+                 ngModel
+                 #nameInput="ngModel"
+                 required>
+          <span class="help-block" *ngIf="nameInput.touched && !nameInput.valid" >The name is required</span>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount" style="font-size: 20px;">Amount</label>
+          <input type="number"
+                 id="amount"
+                 class="form-control"
+                 name="amount"
+                 ngModel
+                 #amountInput="ngModel"
+                 pattern="^[1-9]+[0-9]*$"
+                 required>
+          <span class="help-block" *ngIf="amountInput.touched && !amountInput.valid">The amount is required</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!addIngredientForm.valid" style="font-size: 20px;">{{editMode? 'Update' : 'Add'}}</button>&nbsp;
+          <button type="button"
+                  *ngIf="editMode"
+                  class="btn btn-danger"
+                  (click)="onDeleteItem()" style="font-size: 20px;">Delete</button>&nbsp;
+          <button type="button" class="btn btn-primary" (click)="onResetForm()" style="font-size: 20px;">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
